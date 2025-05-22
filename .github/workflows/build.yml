@@ -29,7 +29,6 @@ jobs:
           ls -la android/ || echo "android/ not found"
           ls -la pubspec.yaml || echo "pubspec.yaml not found"
           ls -la lib/main.dart || echo "lib/main.dart not found"
-          ls -la test/widget_test.dart || echo "widget_test.dart not found"
 
       # Отладка Git
       - name: Debug Git
@@ -42,7 +41,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '21'
+          java-version: '17'
 
       # Устанавливаем Flutter
       - name: Setup Flutter
@@ -57,18 +56,10 @@ jobs:
         run: |
           echo "GOOGLE_PLACES_API_KEY=${{ secrets.GOOGLE_PLACES_API_KEY }}" > lib/.env
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> lib/.env
-          cat lib/.env  # Отладка содержимого .env
 
       # Получаем зависимости
       - name: Get dependencies
-        run: |
-          flutter pub get
-          cat pubspec.lock | grep google_fonts  # Отладка версии google_fonts
-
-      # Отладка AndroidManifest
-      - name: Verify AndroidManifest
-        run: |
-          cat android/app/src/main/AndroidManifest.xml | grep INTERNET || echo "INTERNET permission not found"
+        run: flutter pub get
 
       # Генерируем иконки
       - name: Generate launcher icons
@@ -83,41 +74,21 @@ jobs:
       # Декодируем keystore из Base64
       - name: Decode Keystore
         env:
-          SIGNING_KEY: ${{ secrets.upload }}  # Используем upload
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
         run: |
-          echo "$SIGNING_KEY" > temp.b64
-          base64 --decode temp.b64 > android/app/upload-keystore.jks
-          rm temp.b64
-
-      # Проверяем наличие и целостность keystore
-      - name: Verify Keystore and key.properties
-        run: |
-          ls -la android/app/
-          file android/app/upload-keystore.jks || echo "Keystore file not found or invalid"
-          keytool -list -keystore android/app/upload-keystore.jks -storepass ${{ secrets.KEY_STORE_PASSWORD }} || echo "Failed to read keystore"
-          keytool -v -list -keystore android/app/upload-keystore.jks -storepass ${{ secrets.KEY_STORE_PASSWORD }} || echo "Failed to read keystore with verbose"
-          cat android/key.properties || echo "key.properties not found"
-          pwd
-          find . -name "upload-keystore.jks"
-          java -version
+          echo $SIGNING_KEY | base64 --decode > android/app/upload-keystore.jks
 
       # Создаём key.properties
       - name: Create key.properties
         run: |
           echo "storePassword=${{ secrets.KEY_STORE_PASSWORD }}" > android/key.properties
           echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" > android/key.properties
-          echo "storeFile=upload-keystore.jks" > android/key.properties
-
-      # Отладка Gradle
-      - name: Debug Gradle
-        run: |
-          ./gradlew --version
-          cat android/app/build.gradle.kts | grep minifyEnabled || echo "minifyEnabled not found"
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "storeFile=app/upload-keystore.jks" >> android/key.properties
 
       # Собираем APK
       - name: Build APK
-        run: flutter build apk --release --verbose
+        run: flutter build apk --release
 
       # Загружаем подписанный APK
       - name: Upload APK
