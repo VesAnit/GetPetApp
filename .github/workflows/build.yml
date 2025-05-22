@@ -62,6 +62,21 @@ jobs:
         run: flutter test
         continue-on-error: true
 
+# Декодируем keystore из Base64
+      - name: Decode Keystore
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+        run: |
+          echo $SIGNING_KEY | base64 --decode > android/app/upload-keystore.jks
+
+      # Создаём key.properties
+      - name: Create key.properties
+        run: |
+          echo "storePassword=${{ secrets.KEY_STORE_PASSWORD }}" > android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "storeFile=app/upload-keystore.jks" >> android/key.properties
+
       # Собираем APK
       - name: Build APK
         run: flutter build apk --release
