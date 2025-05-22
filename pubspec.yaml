@@ -1,0 +1,46 @@
+name: get_pet
+description: "A Flutter application for pet adoption."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_dotenv: ^5.2.1
+  cupertino_icons: ^1.0.8
+  provider: ^6.1.2
+  http: ^1.2.2
+  image_picker: ^1.1.2
+  shared_preferences: ^2.3.0
+  jwt_decoder: ^2.0.1
+  cached_network_image: ^3.4.1
+  google_places_flutter: ^2.0.8
+  intl: ^0.20.0
+  google_fonts: ^6.2.1
+  flutter_card_swiper: ^2.1.0
+  multi_select_flutter: ^4.1.3
+  flutter_lints: ^3.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/01.png
+    - assets/images/paws.png
+    - lib/.env
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/01.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/01.png"
+  remove_alpha_ios: true
+  min_sdk_android: 21
