@@ -190,7 +190,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
             SnackBar(
               content: Text(
                 'Maximum 3 images',
-                style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+                style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
               ),
               duration: const Duration(seconds: 4),
               backgroundColor: Colors.red,
@@ -247,7 +247,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
           SnackBar(
             content: Text(
               errorMessage,
-              style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+              style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
             ),
             duration: const Duration(seconds: 4),
             backgroundColor: Colors.red,
@@ -337,7 +337,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
           SnackBar(
             content: Text(
               'Please add at least one image',
-              style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+              style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
             ),
             duration: const Duration(seconds: 4),
             backgroundColor: Colors.red,
@@ -379,7 +379,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
             SnackBar(
               content: Text(
                 'Announcement updated successfully!',
-                style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+                style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
               ),
               duration: const Duration(seconds: 2),
             ),
@@ -404,7 +404,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
             SnackBar(
               content: Text(
                 'Announcement created successfully!',
-                style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+                style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
               ),
               duration: const Duration(seconds: 2),
             ),
@@ -423,7 +423,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
           SnackBar(
             content: Text(
               errorMessage,
-              style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+              style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
             ),
             duration: const Duration(seconds: 4),
             backgroundColor: Colors.red,
@@ -553,7 +553,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                       SnackBar(
                         content: Text(
                           'Maximum 5 keywords allowed!',
-                          style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+                          style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
                         ),
                         duration: const Duration(seconds: 2),
                         backgroundColor: Colors.red,
@@ -621,7 +621,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
           backgroundColor: const Color(0xFFFFFBF2),
           title: Text(
             'Select Keywords (max 5)',
-            style: GoogleFonts.lakkiReddy(fontSize: 22, color: const Color(0xFF7D6199), fontWeight: FontWeight.bold),
+            style: GoogleFonts.oldenburg(fontSize: 22, color: const Color(0xFF7D6199), fontWeight: FontWeight.bold),
           ),
           content: StatefulBuilder(
             builder: (context, setDialogState) {
@@ -648,7 +648,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                                   SnackBar(
                                     content: Text(
                                       'Maximum 5 keywords allowed!',
-                                      style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+                                      style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
                                     ),
                                     duration: const Duration(seconds: 2),
                                     backgroundColor: Colors.red,
@@ -714,7 +714,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
         elevation: 0,
         title: Text(
           widget.isEditMode ? 'Edit Announcement' : 'Create Announcement',
-          style: GoogleFonts.lakkiReddy(fontSize: 24, color: const Color(0xFF7D6199), fontWeight: FontWeight.bold),
+          style: GoogleFonts.oldenburg(fontSize: 20, color: const Color(0xFF7D6199), fontWeight: FontWeight.bold),
         ),
       ),
       body: Padding(
@@ -728,7 +728,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: Text(
                     _error!,
-                    style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -756,7 +756,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                           SnackBar(
                             content: Text(
                               'Animal type must match the photo',
-                              style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+                              style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
                             ),
                             backgroundColor: Colors.red,
                             duration: const Duration(seconds: 3),
@@ -852,7 +852,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
               const SizedBox(height: 16),
               Text(
                 'Keywords:',
-                style: GoogleFonts.lakkiReddy(fontSize: 22, color: const Color(0xFFD87A68), fontWeight: FontWeight.bold),
+                style: GoogleFonts.oldenburg(fontSize: 22, color: const Color(0xFFD87A68), fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               _buildKeywordChips(),
@@ -874,7 +874,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
               const SizedBox(height: 16),
               Text(
                 'Add Images (up to 3):',
-                style: GoogleFonts.lakkiReddy(fontSize: 22, color: const Color(0xFFD87A68), fontWeight: FontWeight.bold),
+                style: GoogleFonts.oldenburg(fontSize: 22, color: const Color(0xFFD87A68), fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               Row(
@@ -886,7 +886,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Text(
                     'Suggested: ${_suggestedAnimalType != null ? _suggestedAnimalType!.capitalize() : ''}${_suggestedBreed != null ? ', ${_suggestedBreed!.replaceAll('_', ' ').toLowerCase().capitalize()}' : ''}',
-                    style: GoogleFonts.lakkiReddy(fontSize: 20, color: const Color(0xFF8A9254), fontWeight: FontWeight.bold),
+                    style: GoogleFonts.oldenburg(fontSize: 20, color: const Color(0xFF8A9254), fontWeight: FontWeight.bold),
                   ),
                 ),
               const SizedBox(height: 16),

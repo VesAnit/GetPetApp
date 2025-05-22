@@ -91,7 +91,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         title: Text(
           'Your Heart',
           style: GoogleFonts.oldenburg(
-            fontSize: 24,
+            fontSize: 20,
             color: const Color(0xFF7D6199),
             fontWeight: FontWeight.bold,
           ),

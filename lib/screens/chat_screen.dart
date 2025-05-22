@@ -125,7 +125,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     _error!,
-                    style: GoogleFonts.lakkiReddy(
+                    style: GoogleFonts.oldenburg(
                       fontSize: 16,
                       color: Colors.red,
                     ),
@@ -138,7 +138,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         ? Center(
                             child: Text(
                               'No messages yet',
-                              style: GoogleFonts.lakkiReddy(
+                              style: GoogleFonts.oldenburg(
                                 fontSize: 18,
                                 color: const Color(0xFF7D6199),
                               ),

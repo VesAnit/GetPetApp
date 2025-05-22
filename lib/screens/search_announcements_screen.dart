@@ -293,7 +293,7 @@ return;
 final selected = await showDialog<String>(
 context: context,
 builder: (context) => AlertDialog(
-title: Text('Select Keyword', style: GoogleFonts.lakkiReddy(fontSize: 24, color: const Color(0xFF7D6199))),
+title: Text('Select Keyword', style: GoogleFonts.oldenburg(fontSize: 24, color: const Color(0xFF7D6199))),
 content: SingleChildScrollView(
 child: Column(
 children: availableKeywords
@@ -734,7 +734,7 @@ const SizedBox(height: 8),
 _buildKeywordChips(),
 const SizedBox(height: 16),
 Text(
-'Add Images (up to 3):',
+'Add Images for breed detection (up to 3):',
 style: GoogleFonts.oldenburg(fontSize: 22, color: const Color(0xFFD87A68), fontWeight: FontWeight.bold),
 ),
 const SizedBox(height: 8),

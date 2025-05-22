@@ -57,7 +57,7 @@ class _AnnouncementsListScreenState extends State<AnnouncementsListScreen> {
           SnackBar(
             content: Text(
               'Error: $errorMessage',
-              style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+              style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
             ),
             backgroundColor: Colors.red,
           ),
@@ -89,9 +89,9 @@ class _AnnouncementsListScreenState extends State<AnnouncementsListScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                'Removed from Favorites',
+                'Removed from Heart',
                 style:
-                    GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+                    GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
               ),
             ),
           );
@@ -105,9 +105,9 @@ class _AnnouncementsListScreenState extends State<AnnouncementsListScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                'Added to Favorites',
+                'Added to Heart',
                 style:
-                    GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+                    GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
               ),
             ),
           );
@@ -126,7 +126,7 @@ class _AnnouncementsListScreenState extends State<AnnouncementsListScreen> {
           SnackBar(
             content: Text(
               'Error: $errorMessage',
-              style: GoogleFonts.lakkiReddy(fontSize: 20, color: Colors.white),
+              style: GoogleFonts.oldenburg(fontSize: 20, color: Colors.white),
             ),
             backgroundColor: Colors.red,
           ),
@@ -153,8 +153,8 @@ class _AnnouncementsListScreenState extends State<AnnouncementsListScreen> {
         elevation: 0,
         title: Text(
           'Announcements',
-          style: GoogleFonts.lakkiReddy(
-            fontSize: 24,
+          style: GoogleFonts.oldenburg(
+            fontSize: 20,
             color: const Color(0xFF7D6199),
             fontWeight: FontWeight.bold,
           ),
@@ -181,7 +181,7 @@ class _AnnouncementsListScreenState extends State<AnnouncementsListScreen> {
             return Center(
               child: Text(
                 'Error: ${snapshot.error}',
-                style: GoogleFonts.lakkiReddy(
+                style: GoogleFonts.oldenburg(
                   fontSize: 20,
                   color: Colors.red,
                   fontWeight: FontWeight.bold,
@@ -193,7 +193,7 @@ class _AnnouncementsListScreenState extends State<AnnouncementsListScreen> {
             return Center(
               child: Text(
                 'No announcements found',
-                style: GoogleFonts.lakkiReddy(
+                style: GoogleFonts.oldenburg(
                   fontSize: 20,
                   color: const Color(0xFF7D6199),
                   fontWeight: FontWeight.bold,

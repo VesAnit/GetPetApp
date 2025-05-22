@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final _registerEmailController = TextEditingController();
   final _registerPasswordController = TextEditingController();
   bool _hasUnreadMessages = false;
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -67,6 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
       );
       return;
     }
+    setState(() {
+      _isLoading = true; // Включаем загрузку
+    });
 
     try {
       await authProvider.login(username, password);
@@ -80,10 +84,15 @@ class _HomeScreenState extends State<HomeScreen> {
       );
       _loginUsernameController.clear();
       _loginPasswordController.clear();
-      setState(() {});
+      setState(() {
+        _isLoading = false;
+      });
       await _checkUnreadMessages();
       debugPrint("HomeScreen: Login successful, UI updated");
     } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
       String errorMessage = e.toString().contains('detail')
           ? e.toString().split('"detail":"')[1].split('"')[0]
           : 'An error occurred';
@@ -97,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
       debugPrint("HomeScreen: Login error: $e");
-    }
+    };
   }
 
   Future<void> _register(BuildContext context) async {
@@ -119,6 +128,10 @@ class _HomeScreenState extends State<HomeScreen> {
       return;
     }
 
+    setState(() {
+      _isLoading = true; // Включаем загрузку
+    });
+
     try {
       await authProvider.register(username, email, password);
       ScaffoldMessenger.of(context).showSnackBar(
@@ -132,10 +145,15 @@ class _HomeScreenState extends State<HomeScreen> {
       _registerUsernameController.clear();
       _registerEmailController.clear();
       _registerPasswordController.clear();
-      setState(() {});
+      setState(() {
+        _isLoading = false;
+          });
       await _checkUnreadMessages();
       debugPrint("HomeScreen: Register successful, UI updated");
     } catch (e) {
+      setState(() {
+        _isLoading = false;
+    });
       String errorMessage = e.toString().contains('detail')
           ? e.toString().split('"detail":"')[1].split('"')[0]
           : 'An error occurred';

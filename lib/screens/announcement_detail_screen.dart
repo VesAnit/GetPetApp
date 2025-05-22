@@ -339,7 +339,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
         title: Text(
           'Pet Details',
           style: GoogleFonts.oldenburg(
-            fontSize: 24,
+            fontSize: 20,
             color: const Color(0xFF7D6199),
             fontWeight: FontWeight.bold,
           ),
