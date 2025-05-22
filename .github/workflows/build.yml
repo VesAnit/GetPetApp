@@ -1,0 +1,74 @@
+name: Build Flutter APK
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Полное клонирование
+
+      # Отладка структуры
+      - name: Debug Directory Structure
+        run: |
+          pwd
+          ls -la
+          ls -la lib/ || echo "lib/ not found"
+          ls -la android/ || echo "android/ not found"
+          ls -la pubspec.yaml || echo "pubspec.yaml not found"
+          ls -la lib/main.dart || echo "lib/main.dart not found"
+
+      # Отладка Git
+      - name: Debug Git
+        run: |
+          git config --list
+          git remote -v
+
+      # Устанавливаем Java
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # Устанавливаем Flutter
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.2'
+          channel: 'stable'
+          cache: false  # Отключаем кэш
+
+      # Получаем зависимости
+      - name: Get dependencies
+        run: flutter pub get
+
+      # Генерируем иконки
+      - name: Generate launcher icons
+        run: flutter pub run flutter_launcher_icons:main
+
+      # Запускаем тесты
+      - name: Run tests
+        run: flutter test
+        continue-on-error: true
+
+      # Собираем APK
+      - name: Build APK
+        run: flutter build apk --release
+
+      # Загружаем APK
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
