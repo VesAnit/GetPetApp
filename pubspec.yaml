@@ -32,15 +32,15 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/01.png
+    - assets/images/icon/01.png
     - assets/images/paws.png
     - lib/.env
 
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/01.png"
+  image_path: "assets/images/icon/01.png"
   adaptive_icon_background: "#FFFFFF"
-  adaptive_icon_foreground: "assets/images/01.png"
+  adaptive_icon_foreground: "assets/images/icon/01.png"
   remove_alpha_ios: true
   min_sdk_android: 21

@@ -1,4 +1,4 @@
-name: Build Flutter APK
+name: Build and Sign Flutter APK
 
 on:
   push:
@@ -7,12 +7,14 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # Клонируем репозиторий
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -49,20 +51,27 @@ jobs:
           channel: 'stable'
           cache: false  # Отключаем кэш
 
+      # Создаём lib/.env файл
+      - name: Create lib/.env file
+        run: |
+          echo "GOOGLE_PLACES_API_KEY=${{ secrets.GOOGLE_PLACES_API_KEY }}" > lib/.env
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> lib/.env
+
       # Получаем зависимости
       - name: Get dependencies
         run: flutter pub get
 
       # Генерируем иконки
       - name: Generate launcher icons
-        run: flutter pub run flutter_launcher_icons:main
+        run: flutter pub run flutter_launcher_icons
+        continue-on-error: true
 
       # Запускаем тесты
       - name: Run tests
         run: flutter test
         continue-on-error: true
 
-# Декодируем keystore из Base64
+      # Декодируем keystore из Base64
       - name: Decode Keystore
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
@@ -81,7 +90,7 @@ jobs:
       - name: Build APK
         run: flutter build apk --release
 
-      # Загружаем APK
+      # Загружаем подписанный APK
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
